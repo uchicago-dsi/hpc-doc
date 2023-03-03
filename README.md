@@ -89,7 +89,7 @@ cat test.err
 ```
 
 # Storage
-TLDR: Save your code on /home/$cnetid, save your data on /net/scratch/$cnetid, and back your data on /net/scratch/$cnetid periodically.
+TLDR: Save your code on /home/$cnetid, save your data on /net/scratch/$cnetid, and back your data periodically, especially for /net/scratch/$cnetid.
 
 **There is no backup for /net/scratch/$cnetid and the files will be cleaned periodically** (maybe every 2 months).
 
