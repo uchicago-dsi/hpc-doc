@@ -7,7 +7,7 @@ ssh cnetid@fe01.ds.uchicago.edu
 ## With key
 ```
 ssh-keygen
-ssh-copy-id -i ~/.ssh/id_rsa.pub ssh cnetid@fe01.ds.uchicago.edu
+ssh-copy-id -i ~/.ssh/id_rsa.pub cnetid@fe01.ds.uchicago.edu
 ```
 ## With Config
 ```
