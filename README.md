@@ -1,4 +1,6 @@
 # HPC_DOC for DSI CLUSTER
+# Accounts
+We do not have apporiate way to probe whether we has an CS account or not, one way is just try to login to the login node. If you can, then you has an CS account. Otherwise, sent the ticket via https://account-request.cs.uchicago.edu/account/requests .
 # SSH
 cnetid is the username for the cluster. The password is the same as the one used for the cnetid network. 
 ```
