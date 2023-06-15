@@ -11,9 +11,13 @@ After the group exist, we can create a folder for that space via zfs command.
 
 ### Create Project Folder
 There are two folders, project and scratch
-*/net/project*
+
+*/net/home*
+
 cluster-storage1.uchicago.edu 
-*/net/scratch*
+
+*/net/project*
+
 cluster-storage2.uchicago.edu
 
 To prevent conflict, we use __$name for the group name. For example, if the group name is dsi, then the folder name will be __dsi. Because there exist user and user group with the same name, so we use __$name for the group name.
