@@ -1,6 +1,35 @@
 # HPC_DOC for DSI CLUSTER
 # Accounts
 We do not have apporiate way to probe whether we have an CS account or not, one way is just try to login to the login node. If you can, then you has an CS account. Otherwise, sent the ticket via https://account-request.cs.uchicago.edu/account/requests .
+## Group
+Similarly, send a ticket to techstaff@cs.uchicago.edu if you would like to create a group a join a group.
+
+## Space
+After the group exist, we can create a folder for that space via zfs command.
+
+**Those commands are only for admin**
+
+### Create Project Folder
+There are two folders, project and scratch
+*/net/project*
+cluster-storage1.uchicago.edu 
+*/net/scratch*
+cluster-storage2.uchicago.edu
+
+To prevent conflict, we use __$name for the group name. For example, if the group name is dsi, then the folder name will be __dsi. Because there exist user and user group with the same name, so we use __$name for the group name.
+
+- ask CS staff to create group
+    - group_name = __$name
+- zfs create tank/projects/$name
+- zfs set refquota=500G  tank/projects/$name
+- chown root:__$name tank/projests/$name
+- getent group __$name
+
+### Share your folder
+- chgrp __$name tank/projects/$name
+- chmod g+s tank/projects/$name
+- chmod -R g+w tank/projects/$name
+
 # SSH
 cnetid is the username for the cluster. The password is the same as the one used for the cnetid network. 
 ```
@@ -30,6 +59,10 @@ Now we are in the interactive job. We can run your code here, the disk space is 
 
 ## Coding and Mounting
 If we want to write code on the server, one way is to use vim. Or we can use vscode ssh to the login node, as the disk space is also mounted on the computation node, so we will see the same files on the login node and the computation node.
+
+### vscode issues
+Q: vscode remote ssh can not work
+A: ssh to the login node, and rm -rf ~/.vscode-server. Note: you should close all the vscode windows before you do this.
 
 ## Sample Code
 ```python
@@ -94,6 +127,23 @@ cat test.err
 TLDR: Save your code on /home/$cnetid, save your data on /net/scratch/$cnetid, and back your data periodically, especially for /net/scratch/$cnetid.
 
 **There is no backup for /net/scratch/$cnetid and the files will be cleaned periodically** (maybe every 2 months).
+
+# Packages
+If you need a package but the system does not provide it, you can install it via conda and set the conda path before the system path. For example, if you want to use stow but the system does not provide it, you can install it via conda and set the conda path before the system path.
+
+Assume you have installed anaconda3 on your home folder, then you can add the following line to your .bashrc file.
+```
+export PATH=$HOME/anaconda3/bin:$PATH
+```
+Then you can do the following to install to install
+ 
+```
+conda install -c conda-forge stow
+```
+
+
+## Run out of Space of your home
+Install your package in scratch and monitor it's integrity.
 
 
 
